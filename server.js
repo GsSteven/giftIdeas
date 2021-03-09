@@ -1,19 +1,20 @@
 require('dotenv').config;
-import { express, bodyParser } from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
-import mongoose from 'mongoose';
-
+const express = require('express');
 const app = express();
+const cors = require('cors');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const path = require('path');
 
 const MONGO_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT || 8080;
 
 //imported routes
-
+const giftRoute = require('./routes/gift');
 
 //mongoDB connect
-mongoose.connect(MONGO_URI || 'mongodb://localhost/prints', {
+mongoose.connect(MONGO_URI || 'mongodb://localhost/giftIdeas', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -31,7 +32,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //route middleware
-
+app.use('/api/gifts', giftRoute);
 
 
 //for production app
