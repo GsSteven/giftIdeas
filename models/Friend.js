@@ -3,26 +3,26 @@ const Schema = mongoose.Schema;
 
 //gifts Schema
 
-const GiftSchema = new Schema({
+const FriendSchema = new Schema({
     name: {
         type: String,
         required: true
     },
-    holiday: {
-        type: String
-    },
-    date: {
+    birthday: {
         type: Date
     },
-    desc: {
+    favCandy: {
         type: String
     },
-    link: {
+    favColor: {
         type: String
+    },
+    gifts: {
+        type: Array
     }
 });
 
-const Gift = mongoose.model("gifts", GiftSchema);
+const Friend = mongoose.model("gifts", FriendSchema);
 
-module.exports = Gift;
+module.exports = Friend;
 

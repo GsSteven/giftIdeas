@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Gift = require('./../models/Gift');
+const Friend = require('../models/Friend');
 
 router.get('', (req, res) => {
-    Gift.find({})
+    Friend.find({})
         .then(response => {
             res.status(200).send(response);
         });

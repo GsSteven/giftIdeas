@@ -11,7 +11,7 @@ const MONGO_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT || 8080;
 
 //imported routes
-const giftRoute = require('./routes/gift');
+const friendRoute = require('./routes/friend');
 
 //mongoDB connect
 mongoose.connect(MONGO_URI || 'mongodb://localhost/giftIdeas', {
@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //route middleware
-app.use('/api/gifts', giftRoute);
+app.use('/api/friends', friendRoute);
 
 
 //for production app
