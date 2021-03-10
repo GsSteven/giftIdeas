@@ -9,12 +9,12 @@ const FriendSchema = new Schema({
         required: true
     },
     birthday: {
-        type: Date
-    },
-    favCandy: {
         type: String
     },
-    favColor: {
+    favoriteColor: {
+        type: String
+    },
+    favoriteCandy: {
         type: String
     },
     gifts: {
@@ -22,7 +22,7 @@ const FriendSchema = new Schema({
     }
 });
 
-const Friend = mongoose.model("gifts", FriendSchema);
+const Friend = mongoose.model("friends", FriendSchema);
 
 module.exports = Friend;
 

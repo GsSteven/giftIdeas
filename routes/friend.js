@@ -9,6 +9,25 @@ router.get('', (req, res) => {
         });
 });
 
+router.post('', (req, res) => {
+    const data = req.body.data.payLoad;
+    const newFriend = new Friend({
+        name: data.name,
+        birthday: data.birthday,
+        favoriteColor: data.favoriteColor,
+        favoriteCandy: data.favoriteCandy,
+        gifts: []
+    });
+    newFriend.save()
+        .then(() => {
+            res.status(200).send();
+        })
+        .catch(e => {
+            console.log(e);
+            res.status(400).send('error');
+        });
+});
+
 
 
 

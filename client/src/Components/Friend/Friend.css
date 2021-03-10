@@ -1,0 +1,37 @@
+.friendWrapper {
+    font-family: "Martel", sans-serif;
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #111111;
+}
+
+.friendWrapper h3 {
+    cursor: pointer;
+}
+
+.birthday {
+    margin-left: 10px;
+}
+
+#expandArrow {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    transition: .3s linear;
+}
+
+.rotateArrow {
+    transform: rotate(90deg);
+}
+
+#addGiftButton {
+    font-size: 25px;
+    font-weight: 900;
+    text-align: center;
+    background-color: rgba(41, 129, 60, 0.7);
+    border-radius: 3px;
+}
+

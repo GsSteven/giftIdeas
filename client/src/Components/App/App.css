@@ -1,3 +1,4 @@
+
 .appWrapper {
   min-height: 100vh;
   background-color: rgb(200, 216, 236);
@@ -13,10 +14,15 @@ header {
 
 .friendList {
   background-color: rgb(230, 230, 230);
-  min-height: 100px;
+  min-height: 350px;
   width: 80%;
   margin: 30px auto 0 auto;
+  padding-bottom: 10px;
   border-radius: 5px;
+}
+
+.friends {
+  padding-top: 60px;
 }
 
 .addFriend {
