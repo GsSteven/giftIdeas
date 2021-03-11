@@ -14,14 +14,16 @@ class Gift extends React.Component {
                 if (response.status === 200) {
                     this.props.refresh();
                 }
-                console.log(response);
-            });
+            },
+                error => {
+
+                });
     }
 
     render() {
         return (
             <div className="giftWrapper" >
-                <p id="removeGift" title={`remove ${this.props.item}`} onClick={this.removeGift}>-</p>
+                <p id="removeGift" title={`remove ${this.props.item}`} onClick={this.removeGift}>remove</p>
                 <h4>{this.props.item}</h4>
 
                 {this.props.price &&

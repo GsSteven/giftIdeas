@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 const router = express.Router();
 const Friend = require('../models/Friend');
@@ -28,6 +29,17 @@ router.post('', (req, res) => {
         });
 });
 
+router.delete('', (req, res) => {
+    const idToDelete = req.query.id;
+    Friend.findById(idToDelete)
+        .then(response => {
+            response.remove();
+            res.status(200).send();
+        })
+        .catch(error => {
+            response.status(400).send();
+        });
+});
 
 
 

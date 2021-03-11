@@ -62,7 +62,7 @@ class App extends React.Component {
     return (
       <div className="appWrapper">
         <header>
-          Gift Ideas
+          <u>Gift Ideas</u>
         </header>
         <section className="friendList">
           <img className="addFriend" src={addPerson} alt="add a friend" title="Add a friend" onClick={this.openAdd} />

@@ -1,8 +1,10 @@
 import React from 'react';
 import './Friend.css';
+import axios from 'axios';
 import AddGift from './../AddGift/AddGift';
 
 //img imports
+import remove from './../../images/subtract.png';
 import expandArrow from './../../images/arrow.png';
 import Gift from '../Gift/Gift';
 
@@ -13,9 +15,13 @@ class Friend extends React.Component {
         this.state = {
             expandFriend: false,
             expandAddGift: false,
+            verifyRemove: false,
+            errorRemoving: false
         }
         this.expandFriend = this.expandFriend.bind(this);
         this.expandAddGift = this.expandAddGift.bind(this);
+        this.verifyRemove = this.verifyRemove.bind(this);
+        this.deleteFriend = this.deleteFriend.bind(this);
     }
 
     expandFriend() {
@@ -32,6 +38,23 @@ class Friend extends React.Component {
 
     expandAddGift() {
         this.state.expandAddGift ? this.setState({ expandAddGift: false }) : this.setState({ expandAddGift: true });
+    }
+
+    verifyRemove() {
+        this.state.verifyRemove ? this.setState({ verifyRemove: false }) : this.setState({ verifyRemove: true });
+    }
+
+    deleteFriend() {
+        axios.delete('/api/friends', { params: { id: this.props.id } })
+            .then(response => {
+                if (response.status === 200) {
+                    this.props.refresh();
+                    this.setState({ verifyRemove: false });
+                }
+            },
+                error => {
+                    this.setState({ errorRemoving: true });
+                });
     }
 
     render() {
@@ -53,28 +76,38 @@ class Friend extends React.Component {
 
         return (
             <div className="friendWrapper">
-                <h3 id={this.props.id} onClick={this.expandFriend}>
-                    {this.props.name}
-                    <span className="birthday">{this.props.birthday}</span>
-                    <img src={expandArrow} id="expandArrow" alt="expand" />
-                </h3>
-                {this.state.expandFriend &&
-                    <div>
-                        {this.props.favoriteColor &&
-                            <h4>Favorite Color: {this.props.favoriteColor}</h4>
-                        }
-                        {this.props.favoriteCandy &&
-                            <h4>Favorite Candy: {this.props.favoriteCandy}</h4>
-                        }
-                        <div id="addGiftButton" onClick={this.expandAddGift}>+</div>
-                        {this.state.expandAddGift &&
-                            <AddGift id={this.props.id} refresh={this.props.refresh} close={this.expandAddGift} />
-                        }
-                        <div id="giftsList">
-                            {gifts}
-                        </div>
+                <img className="removeFriend" src={remove} alt="remove friend" title={`Remove ${this.props.name}`} onClick={this.verifyRemove} />
+                {this.state.verifyRemove &&
+                    <div className="verifyRemove">
+                        <h5>Remove {this.props.name}?</h5>
+                        <button type="button" id="yesButton" onClick={this.deleteFriend}>Yes</button>
+                        <button type="button" id="noButton" onClick={this.verifyRemove}>No</button>
                     </div>
                 }
+                <div className="friend">
+                    <h3 id={this.props.id} onClick={this.expandFriend}>
+                        {this.props.name}
+                        <span className="birthday">{this.props.birthday}</span>
+                        <img src={expandArrow} id="expandArrow" alt="expand" />
+                    </h3>
+                    {this.state.expandFriend &&
+                        <div>
+                            {this.props.favoriteColor &&
+                                <h4>Favorite Color: {this.props.favoriteColor}</h4>
+                            }
+                            {this.props.favoriteCandy &&
+                                <h4>Favorite Candy: {this.props.favoriteCandy}</h4>
+                            }
+                            <div id="addGiftButton" onClick={this.expandAddGift}>+</div>
+                            {this.state.expandAddGift &&
+                                <AddGift id={this.props.id} refresh={this.props.refresh} close={this.expandAddGift} />
+                            }
+                            <div id="giftsList">
+                                {gifts}
+                            </div>
+                        </div>
+                    }
+                </div>
             </div>
         );
     }
