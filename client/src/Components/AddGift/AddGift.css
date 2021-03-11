@@ -1,0 +1,39 @@
+.addGiftWrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 400px;
+    margin: 10px auto 0 auto;
+    padding: 10px 0;
+    background-color: rgba(41, 129, 60, 0.3);
+    border-radius: 5px;
+}
+
+#closeAddGift {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    left: 350px;
+    cursor: pointer;
+}
+
+.addGiftWrapper input {
+    width: 200px;
+    margin: 0 auto 10px auto;
+    text-align: center;
+}
+
+#price {
+    width: 75px;
+}
+
+.addGiftWrapper textarea {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.addGiftWrapper button {
+    width: 50px;
+    height: 25px;
+    margin: 0 auto;
+}

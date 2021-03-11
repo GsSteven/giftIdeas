@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 8080;
 
 //imported routes
 const friendRoute = require('./routes/friend');
+const giftRoute = require('./routes/gifts');
 
 //mongoDB connect
 mongoose.connect(MONGO_URI || 'mongodb://localhost/giftIdeas', {
@@ -33,7 +34,7 @@ app.use(cors());
 
 //route middleware
 app.use('/api/friends', friendRoute);
-
+app.use('/api/gifts', giftRoute);
 
 //for production app
 if (process.env.NODE_ENV === 'production') {

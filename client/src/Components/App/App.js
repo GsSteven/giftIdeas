@@ -17,6 +17,7 @@ class App extends React.Component {
     }
     this.getFriends = this.getFriends.bind(this);
     this.openAdd = this.openAdd.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
 
   getFriends() {
