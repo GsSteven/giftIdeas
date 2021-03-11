@@ -67,7 +67,7 @@ class App extends React.Component {
         <section className="friendList">
           <img className="addFriend" src={addPerson} alt="add a friend" title="Add a friend" onClick={this.openAdd} />
           {this.state.openAdd &&
-            <AddFriend close={this.openAdd} />
+            <AddFriend close={this.openAdd} refresh={this.refresh} />
           }
           <div className="friends">
             {friends}

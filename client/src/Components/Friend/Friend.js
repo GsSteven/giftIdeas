@@ -2,11 +2,12 @@ import React from 'react';
 import './Friend.css';
 import axios from 'axios';
 import AddGift from './../AddGift/AddGift';
+import Gift from '../Gift/Gift';
 
 //img imports
 import remove from './../../images/subtract.png';
 import expandArrow from './../../images/arrow.png';
-import Gift from '../Gift/Gift';
+import edit from './../../images/gear.png';
 
 
 class Friend extends React.Component {
@@ -77,6 +78,7 @@ class Friend extends React.Component {
         return (
             <div className="friendWrapper">
                 <img className="removeFriend" src={remove} alt="remove friend" title={`Remove ${this.props.name}`} onClick={this.verifyRemove} />
+                <img className="editFriend" src={edit} alt="edit friend" title={`Edit ${this.props.name}`} />
                 {this.state.verifyRemove &&
                     <div className="verifyRemove">
                         <h5>Remove {this.props.name}?</h5>

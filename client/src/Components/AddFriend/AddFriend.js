@@ -27,8 +27,14 @@ class AddFriend extends React.Component {
         const payLoad = this.state;
         axios.post('/api/friends', { data: { payLoad } })
             .then(response => {
-                console.log(response);
-            });
+                if (response.status === 200) {
+                    this.props.close();
+                    this.props.refresh();
+                }
+            },
+                error => {
+
+                });
 
     }
 

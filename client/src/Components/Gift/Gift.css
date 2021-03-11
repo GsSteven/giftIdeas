@@ -24,3 +24,8 @@
     border: 1px solid rgb(245, 245, 245);
     background-color: rgb(231, 71, 71);
 }
+
+.giftWrapper a {
+    font-size: 20px;
+    font-weight: 600;
+}

@@ -12,6 +12,18 @@
     cursor: pointer;
 }
 
+.editFriend {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: 30px;
+    left: 18%;
+    cursor: pointer;
+    background-color: rgb(75, 141, 223);
+    padding: 2px;
+    border-radius: 5px;
+}
+
 .friend {
     font-family: "Martel", sans-serif;
     width: 50%;
@@ -78,10 +90,11 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 800px) {
-    .removeFriend {
+@media screen and (max-width: 900px) {
+    .removeFriend,
+    .editFriend {
         float: left;
         left: 0;
-        margin-left: 5%;
+        margin-left: 2.5%;
     }
 }
