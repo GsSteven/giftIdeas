@@ -17,12 +17,8 @@ header {
   min-height: 350px;
   width: 80%;
   margin: 30px auto 0 auto;
-  padding-bottom: 10px;
+  padding: 20px 0;
   border-radius: 5px;
-}
-
-.friends {
-  padding-top: 60px;
 }
 
 .addFriend {
@@ -32,6 +28,27 @@ header {
   float: right;
   margin: 15px 15px 0 0;
   cursor: pointer;
+}
+
+.searchBox {
+  display: flex;
+  justify-content: space-around;
+  width: 260px;
+  margin: 0 auto;
+}
+
+#searchIcon {
+  height: 30px;
+}
+
+#findByName {
+  font-size: 15px;
+  font-family: 'Martel', sans-serif;
+  border-radius: 3px;
+}
+
+.friends {
+  padding-top: 40px;
 }
 
 @media screen and (max-width: 700px) {

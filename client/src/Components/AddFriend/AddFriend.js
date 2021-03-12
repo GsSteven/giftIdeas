@@ -38,9 +38,14 @@ class AddFriend extends React.Component {
 
     }
 
+    componentDidMount() {
+        const topInput = document.getElementById('name');
+        topInput.focus();
+    }
+
     render() {
         return (
-            <form className="addFriendForm" onSubmit={this.addFriend}>
+            <form className="addFriendForm" autoComplete="off" onSubmit={this.addFriend}>
                 <img id="closeAddFriend" src={closeButton} onClick={this.props.close} alt="close" title="cancel Add" />
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" name="name" onChange={this.handleChange} required />

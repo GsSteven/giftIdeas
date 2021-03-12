@@ -45,17 +45,17 @@ class AddGift extends React.Component {
 
     render() {
         return (
-            <form className="addGiftWrapper" onSubmit={this.addGift}>
+            <form className="addGiftWrapper" onSubmit={this.addGift} autoComplete="off">
                 <img id="closeAddGift" src={closeButton} alt="close" onClick={this.props.close} />
-                <label htmlFor="item">item</label>
+                <label htmlFor="item">Item</label>
                 <input type="text" id={`gift${this.props.id}`} name="item" onChange={this.handleChange} required />
-                <label htmlFor="description">description</label>
+                <label htmlFor="description">Description</label>
                 <textarea type="text" id="description" name="description" rows="5" onChange={this.handleChange} />
-                <label htmlFor="price">price</label>
+                <label htmlFor="price">Price</label>
                 <input type="number" step="0.01" id="price" name="price" onChange={this.handleChange} />
                 <label htmlFor="link">URL to product</label>
                 <input type="text" id="link" name="link" onChange={this.handleChange} />
-                <button type="submit">add</button>
+                <button type="submit">Add</button>
             </form>
         );
     }
