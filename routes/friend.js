@@ -29,6 +29,26 @@ router.post('', (req, res) => {
         });
 });
 
+router.put('', (req, res) => {
+    const params = req.body.params;
+    const idToUpdate = req.body.id;
+    Friend.findById(idToUpdate)
+        .then(response => {
+            //update all values changed
+            for (const param in params) {
+                response[param] = params[param];
+            }
+            return response
+        })
+        .then(result => {
+            result.save();
+            res.status(200).send();
+        })
+        .catch(error => {
+            res.status(400).send();
+        });
+});
+
 router.delete('', (req, res) => {
     const idToDelete = req.query.id;
     Friend.findById(idToDelete)

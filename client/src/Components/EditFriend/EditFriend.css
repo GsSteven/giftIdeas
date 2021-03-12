@@ -1,0 +1,56 @@
+.editFriendForm {
+    width: 400px;
+    position: absolute;
+    font-family: "Martel", sans-serif;
+    font-weight: 600;
+    top: auto;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(90, 152, 226);
+    border: 2px dashed black;
+    border-radius: 3px;
+    text-align: center;
+    margin-bottom: 15px;
+    z-index: 1;
+}
+
+#closeEditFriend {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 10px;
+    left: 350px;
+    cursor: pointer;
+}
+
+.editFriendForm label {
+    font-size: 15px;
+    width: 150px;
+    margin: 0 auto;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.editFriendForm input {
+    width: 150px;
+    text-align: center;
+    font-size: 15px;
+    margin: 0 auto 10px auto;
+}
+
+.editFriendForm button {
+    width: 60px;
+    height: 30px;
+    margin: 0 auto 10px auto;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+.editFriendForm button:hover {
+    background-color: rgb(14, 120, 8);
+    color: rgb(245, 245, 245);
+}

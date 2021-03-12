@@ -3,9 +3,11 @@
     flex-direction: column;
     position: relative;
     top: 40px;
+    font-family: "Martel", sans-serif;
     width: 600px;
     border: 1px solid black;
     border-radius: 5px;
+    background-color: rgba(41, 129, 60, 0.3);
     text-align: center;
     margin: 0 auto;
 }
@@ -25,19 +27,35 @@
     margin: 0 auto;
 }
 
+.addFriendForm label {
+    font-size: 15px;
+    font-weight: 600;
+    width: 150px;
+    margin: 0 auto;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
 .addFriendForm label,
 .addFriendForm button {
     margin-top: 10px;
 }
 
 #birthday {
-    width: 175px;
+    width: 150px;
 }
 
 .addFriendForm button {
-    width: 40px;
-    height: 20px;
+    width: 60px;
+    height: 30px;
     align-self: center;
     margin-bottom: 10px;
     cursor: pointer;
+    transition: .3s linear;
+}
+
+.addFriendForm button:hover {
+    background-color: rgb(14, 120, 8);
+    color: rgb(245, 245, 245);
 }

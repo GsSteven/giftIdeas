@@ -24,7 +24,7 @@ class Gift extends React.Component {
         return (
             <div className="giftWrapper" >
                 <p id="removeGift" title={`remove ${this.props.item}`} onClick={this.removeGift}>remove</p>
-                <h4>{this.props.item}</h4>
+                <h4 id="giftName">{this.props.item}</h4>
 
                 {this.props.price &&
                     <h4>${this.props.price}</h4>
