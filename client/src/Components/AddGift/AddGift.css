@@ -5,7 +5,7 @@
     width: 400px;
     margin: 10px auto 0 auto;
     padding: 10px 0;
-    background-color: rgba(41, 129, 60, 0.3);
+    background-color: rgba(41, 129, 60, 0.5);
     border-radius: 5px;
 }
 
@@ -15,6 +15,10 @@
     position: relative;
     left: 350px;
     cursor: pointer;
+}
+
+.addGiftWrapper label {
+    font-weight: 600;
 }
 
 .addGiftWrapper input {
@@ -36,6 +40,13 @@
     width: 50px;
     height: 25px;
     margin: 0 auto;
+    transition: .3s linear;
+    cursor: pointer;
+}
+
+.addGiftWrapper button:hover {
+    background-color: rgb(14, 120, 8);
+    color: rgb(245, 245, 245);
 }
 
 @media screen and (max-width: 1100px) {

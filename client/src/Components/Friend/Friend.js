@@ -27,7 +27,7 @@ class Friend extends React.Component {
         this.expandEdit = this.expandEdit.bind(this);
         this.verifyRemove = this.verifyRemove.bind(this);
         this.deleteFriend = this.deleteFriend.bind(this);
-        this.highlightCurrentBirthday = this.highlightCurrentBirthday.bind(this);
+        this.highlightCurrentBirthdayMonth = this.highlightCurrentBirthdayMonth.bind(this);
     }
 
     expandFriend() {
@@ -67,7 +67,7 @@ class Friend extends React.Component {
                 });
     }
 
-    highlightCurrentBirthday() {
+    highlightCurrentBirthdayMonth() {
         if (this.props.birthday) {
             const d = new Date();
             const currentMonth = (d.getMonth() + 1).toString();
@@ -80,7 +80,7 @@ class Friend extends React.Component {
     }
 
     componentDidMount() {
-        this.highlightCurrentBirthday();
+        this.highlightCurrentBirthdayMonth();
     }
 
     render() {
