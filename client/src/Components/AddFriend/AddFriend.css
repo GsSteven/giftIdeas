@@ -4,7 +4,7 @@
     position: relative;
     top: 40px;
     font-family: "Martel", sans-serif;
-    width: 600px;
+    width: 598px;
     border: 1px solid black;
     border-radius: 5px;
     background-color: rgba(41, 129, 60, 0.3);
@@ -58,4 +58,14 @@
 .addFriendForm button:hover {
     background-color: rgb(14, 120, 8);
     color: rgb(245, 245, 245);
+}
+
+@media screen and (max-width: 700px) {
+    .addFriendForm {
+        width: 100%;
+    }
+
+    #closeAddFriend {
+        left: 90%;
+    }
 }
