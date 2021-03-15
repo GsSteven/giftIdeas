@@ -60,6 +60,7 @@ class AddFriend extends React.Component {
                     type="text"
                     id="birthday"
                     name="birthday"
+                    placeholder="mm/dd"
                     onChange={this.handleChange}
                 />
                 <label htmlFor="favoriteColor">Favorite Color</label>
