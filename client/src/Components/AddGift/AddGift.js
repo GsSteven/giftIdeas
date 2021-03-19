@@ -76,6 +76,8 @@ class AddGift extends React.Component {
                     type="text"
                     id="link"
                     name="link"
+                    pattern="https?://.+"
+                    title="Include http://"
                     onChange={this.handleChange}
                 />
                 <button type="submit">Add</button>

@@ -24,6 +24,12 @@ class AddFriend extends React.Component {
 
     addFriend(e) {
         e.preventDefault();
+        const bDay = this.state.birthday;
+        if (bDay) {
+            if (bDay[2] !== '/') {
+
+            }
+        }
         const payLoad = this.state;
         axios.post('/api/friends', { data: { payLoad } })
             .then(response => {
@@ -60,7 +66,10 @@ class AddFriend extends React.Component {
                     type="text"
                     id="birthday"
                     name="birthday"
+                    maxLength="5"
                     placeholder="mm/dd"
+                    pattern="[0-1] + [0-9] + [/] + [0-3] + [0-9]"
+                    title="Must be mm/dd format"
                     onChange={this.handleChange}
                 />
                 <label htmlFor="favoriteColor">Favorite Color</label>
