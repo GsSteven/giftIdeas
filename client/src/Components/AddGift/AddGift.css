@@ -37,6 +37,7 @@
 }
 
 .addGiftWrapper button {
+    font-weight: 600;
     width: 50px;
     height: 25px;
     margin: 0 auto;

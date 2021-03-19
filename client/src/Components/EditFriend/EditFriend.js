@@ -55,7 +55,10 @@ class EditFriend extends React.Component {
                     type="text"
                     id="birthday"
                     name="birthday"
+                    placeholder="mm/dd"
                     onChange={this.handleChange}
+                    pattern="[0-1] + [0-9] + [/] + [0-3] + [0-9]"
+                    title="Must be mm/dd format"
                     defaultValue={this.props.birthday}
                 />
                 <label htmlFor="favoriteColor">Favorite Color</label>
