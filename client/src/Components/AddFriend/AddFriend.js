@@ -24,12 +24,6 @@ class AddFriend extends React.Component {
 
     addFriend(e) {
         e.preventDefault();
-        const bDay = this.state.birthday;
-        if (bDay) {
-            if (bDay[2] !== '/') {
-
-            }
-        }
         const payLoad = this.state;
         axios.post('/api/friends', { data: { payLoad } })
             .then(response => {
@@ -39,7 +33,7 @@ class AddFriend extends React.Component {
                 }
             },
                 error => {
-
+                    console.error(error);
                 });
 
     }
