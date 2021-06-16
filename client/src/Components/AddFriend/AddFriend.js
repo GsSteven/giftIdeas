@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './AddFriend.css';
 import axios from 'axios';
 
@@ -48,7 +49,14 @@ class AddFriend extends React.Component {
 
     render() {
         return (
-            <form className="addFriendForm" autoComplete="off" onSubmit={this.addFriend}>
+            <motion.form
+                className="addFriendForm"
+                autoComplete="off"
+                onSubmit={this.addFriend}
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: .5, type: "spring", stiffness: 150 }}
+            >
                 <img id="closeAddFriend" src={closeButton} onClick={this.props.close} alt="close" title="cancel Add" />
                 <label htmlFor="name">Name</label>
                 <input
@@ -129,7 +137,7 @@ class AddFriend extends React.Component {
                     onChange={this.handleChange}
                 />
                 <button type="submit">Add</button>
-            </form>
+            </motion.form>
         );
     }
 };

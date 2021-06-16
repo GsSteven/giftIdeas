@@ -16,12 +16,27 @@
     z-index: 1;
 }
 
+.editButtons {
+    position: relative;
+    height: 30px;
+}
+
+.removeFriend {
+    height: 15px;
+    width: 15px;
+    border-radius: 2px;
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    cursor: pointer;
+}
+
 #closeEditFriend {
     width: 25px;
     height: 25px;
-    position: relative;
-    top: 10px;
-    left: 350px;
+    position: absolute;
+    top: 5px;
+    left: 360px;
     cursor: pointer;
 }
 
@@ -55,6 +70,41 @@ label[for=day] {
 }
 
 .editFriendForm button:hover {
+    background-color: rgb(14, 120, 8);
+    color: rgb(245, 245, 245);
+}
+
+.verifyRemove {
+    text-align: center;
+    background-color: rgba(231, 71, 71, .7);
+    height: 70px;
+    border-radius: 3px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.removeButtons {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.verifyRemove button {
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+#yesButton:hover {
+    background-color: rgb(163, 0, 12);
+    color: rgb(245, 245, 245);
+}
+
+#noButton:hover {
     background-color: rgb(14, 120, 8);
     color: rgb(245, 245, 245);
 }

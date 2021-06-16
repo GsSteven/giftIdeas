@@ -1,18 +1,23 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './EditFriend.css';
 import axios from 'axios';
 
 //img imports
 import closeButton from './../../images/xButton.png';
+import remove from './../../images/subtract.png';
 
 class EditFriend extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            verifyRemove: false,
+            errorRemoving: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.submitEdit = this.submitEdit.bind(this);
+        this.verifyRemove = this.verifyRemove.bind(this);
+        this.deleteFriend = this.deleteFriend.bind(this);
     }
 
     handleChange(e) {
@@ -39,6 +44,23 @@ class EditFriend extends React.Component {
                 });
     }
 
+    verifyRemove() {
+        this.state.verifyRemove ? this.setState({ verifyRemove: false }) : this.setState({ verifyRemove: true });
+    }
+
+    deleteFriend() {
+        axios.delete('/api/friends', { params: { id: this.props.id } })
+            .then(response => {
+                if (response.status === 200) {
+                    this.props.refresh();
+                    this.setState({ verifyRemove: false });
+                }
+            },
+                error => {
+                    this.setState({ errorRemoving: true });
+                });
+    }
+
 
     render() {
         const birthday = this.props.birthday;
@@ -51,8 +73,18 @@ class EditFriend extends React.Component {
         }
 
         return (
-            <form className="editFriendForm" autoComplete="off" onSubmit={this.submitEdit}>
-                <img id="closeEditFriend" src={closeButton} onClick={this.props.close} alt="close" title="Cancel Add" />
+            <motion.form
+                className="editFriendForm"
+                autoComplete="off"
+                onSubmit={this.submitEdit}
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: .4, type: "spring", stiffness: 150 }}
+            >
+                <div className="editButtons">
+                    <img className="removeFriend" src={remove} alt="remove friend" title={`Remove ${this.props.name}`} onClick={this.verifyRemove} />
+                    <img id="closeEditFriend" src={closeButton} onClick={this.props.close} alt="close" title="Cancel Add" />
+                </div>
                 <label htmlFor="name">Name</label>
                 <input
                     type="text"
@@ -135,7 +167,21 @@ class EditFriend extends React.Component {
                     defaultValue={this.props.favoriteCandy}
                 />
                 <button type="submit">Confirm</button>
-            </form>
+                {this.state.verifyRemove &&
+                    <motion.div
+                        className="verifyRemove"
+                        initial={{ y: -25, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: .3, type: "tween" }}
+                    >
+                        <h5>Remove {this.props.name}?</h5>
+                        <div className="removeButtons">
+                            <button type="button" id="yesButton" onClick={this.deleteFriend}>Yes</button>
+                            <button type="button" id="noButton" onClick={this.verifyRemove}>No</button>
+                        </div>
+                    </motion.div>
+                }
+            </motion.form>
         );
     }
 };

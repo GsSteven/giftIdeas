@@ -1,12 +1,11 @@
 import React from 'react';
+import { motion } from "framer-motion";
 import './Friend.css';
-import axios from 'axios';
 import AddGift from './../AddGift/AddGift';
 import Gift from '../Gift/Gift';
 import EditFriend from '../EditFriend/EditFriend';
 
 //img imports
-import remove from './../../images/subtract.png';
 import expandArrow from './../../images/arrow.png';
 import edit from './../../images/gear.png';
 
@@ -19,14 +18,10 @@ class Friend extends React.Component {
             expandFriend: false,
             expandAddGift: false,
             expandEdit: false,
-            verifyRemove: false,
-            errorRemoving: false
         }
         this.expandFriend = this.expandFriend.bind(this);
         this.expandAddGift = this.expandAddGift.bind(this);
         this.expandEdit = this.expandEdit.bind(this);
-        this.verifyRemove = this.verifyRemove.bind(this);
-        this.deleteFriend = this.deleteFriend.bind(this);
         this.highlightCurrentBirthdayMonth = this.highlightCurrentBirthdayMonth.bind(this);
     }
 
@@ -48,23 +43,6 @@ class Friend extends React.Component {
 
     expandEdit() {
         this.state.expandEdit ? this.setState({ expandEdit: false }) : this.setState({ expandEdit: true });
-    }
-
-    verifyRemove() {
-        this.state.verifyRemove ? this.setState({ verifyRemove: false }) : this.setState({ verifyRemove: true });
-    }
-
-    deleteFriend() {
-        axios.delete('/api/friends', { params: { id: this.props.id } })
-            .then(response => {
-                if (response.status === 200) {
-                    this.props.refresh();
-                    this.setState({ verifyRemove: false });
-                }
-            },
-                error => {
-                    this.setState({ errorRemoving: true });
-                });
     }
 
     highlightCurrentBirthdayMonth() {
@@ -102,15 +80,14 @@ class Friend extends React.Component {
 
         return (
             <div className="friendWrapper">
-                <img className="removeFriend" src={remove} alt="remove friend" title={`Remove ${this.props.name}`} onClick={this.verifyRemove} />
-                <img className="editFriend" src={edit} alt="edit friend" title={`Edit ${this.props.name}`} onClick={this.expandEdit} />
-                {this.state.verifyRemove &&
-                    <div className="verifyRemove">
-                        <h5>Remove {this.props.name}?</h5>
-                        <button type="button" id="yesButton" onClick={this.deleteFriend}>Yes</button>
-                        <button type="button" id="noButton" onClick={this.verifyRemove}>No</button>
-                    </div>
-                }
+                <motion.img
+                    className="editFriend"
+                    src={edit} alt="edit friend"
+                    title={`Edit ${this.props.name}`}
+                    onClick={this.expandEdit}
+                    whileHover={{ rotate: 45 }}
+                    transition={{ type: "spring", stiffness: 200 }}
+                />
                 <div className="friend">
                     <h3 id={this.props.id} onClick={this.expandFriend}>
                         {this.props.name}
@@ -118,7 +95,11 @@ class Friend extends React.Component {
                         <img src={expandArrow} id="expandArrow" alt="expand" />
                     </h3>
                     {this.state.expandFriend &&
-                        <div>
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: .4, type: "spring", stiffness: 150 }}
+                        >
                             {this.props.favoriteColor &&
                                 <h4>Favorite Color: {this.props.favoriteColor}</h4>
                             }
@@ -136,7 +117,7 @@ class Friend extends React.Component {
                             <div id="giftsList">
                                 {gifts}
                             </div>
-                        </div>
+                        </motion.div>
                     }
                 </div>
                 {this.state.expandEdit &&

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './AddGift.css';
 import axios from 'axios';
 
@@ -45,7 +46,14 @@ class AddGift extends React.Component {
 
     render() {
         return (
-            <form className="addGiftWrapper" onSubmit={this.addGift} autoComplete="off">
+            <motion.form
+                className="addGiftWrapper"
+                onSubmit={this.addGift}
+                autoComplete="off"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: .5, type: "tween" }}
+            >
                 <img id="closeAddGift" src={closeButton} alt="close" onClick={this.props.close} />
                 <label htmlFor="item">Item</label>
                 <input
@@ -81,7 +89,7 @@ class AddGift extends React.Component {
                     onChange={this.handleChange}
                 />
                 <button type="submit">Add</button>
-            </form>
+            </motion.form>
         );
     }
 };
